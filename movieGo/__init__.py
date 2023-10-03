@@ -1,12 +1,10 @@
 import os
 
 from flask import Flask
-from flask_bootstrap import Bootstrap5
 
 
 def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
-    bootstrap = Bootstrap5(app)
     app.config.from_mapping(
         SECRET_KEY='dev'
     )
@@ -26,6 +24,3 @@ def create_app(test_config=None):
     app.register_blueprint(book.bp)
 
     return app
-
-if __name__ == '__main__':
-    app.run(debug=True, port=8001)
