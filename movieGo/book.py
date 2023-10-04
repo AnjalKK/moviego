@@ -11,5 +11,5 @@ bp = Blueprint('book', __name__, url_prefix='/book')
 
 @bp.route('/slot')
 def register():
-    return render_template('booking.html')
+    return render_template('movie.html')
 
