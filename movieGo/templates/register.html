@@ -14,44 +14,44 @@
           <div class="col-12" style="height: 90vh;">
             <div class="row h-100 w-100">
                 <div class="col-md-6 side-image">
-                    <!--insert logo here-->
-                    <!-- <div class="text">
-                        <p>Join the community book your tickets <i>-MovieGo</i></p>
-                    </div> -->
                 </div>
-                <div class="col-md-6 right">
-                    <div class="input-box">
-                        <header>Create account</header>
-                        <div class="input-field">
-                            <input type="text" class="input" id="name" required autocomplete="off">
-                            <label for="name">Name</label>
-                        </div>
-                        <div class="input-field">
+                <form action="" method="POST">
+                    <div class="col-md-6 right">
+                        <div class="input-box">
+                            <header>Create account</header>
+                            {% with messages = get_flashed_messages(with_categories=true) %}
+                            {{messages}}
+                            {% endwith %}
+                            <div class="input-field">
+                                <input type="text" class="input" name="name" id="name"  autocomplete="off">
+                                <label for="name">Name</label>
+                            </div>
+                            <div class="input-field">
 
-                            <input type="text" class="input" id="phonenumber" required autocomplete="off">
-                            <label for="phonenumber">Phone No</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="text" class="input" id="email" required autocomplete="off">
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="password" class="input" id="password" required>
-                            <label for="password">Password</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="password" class="input" id="repassword" required>
-                            <label for="repassword">Retype Password</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="submit" class="submit" id="submit" value="Sign-up">
-                        </div>
-                        <div class="signin">
-                            <span>Already have an account?<a href="#">Login here</a></span>
+                                <input type="text" class="input" name="phonenumber" id="phonenumber"  autocomplete="off">
+                                <label for="phonenumber">Phone No</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="text" class="input" name="email" id="email" autocomplete="off">
+                                <label for="email">Email</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="password" class="input" name="password" id="password">
+                                <label for="password">Password</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="password" class="input" id="repassword">
+                                <label for="repassword">Retype Password</label>
+                            </div>
+                            <div class="input-field">
+                                <input type="submit" class="submit" id="submit" value="Sign-up">
+                            </div>
+                            <div class="signin">
+                                <span>Already have an account?<a href="#">Login here</a></span>
+                            </div>
                         </div>
                     </div>
-
-                </div>
+                </form>
             </div>
           </div>
         </div>
