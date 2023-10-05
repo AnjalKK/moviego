@@ -12,9 +12,7 @@ bp = Blueprint('auth', __name__, url_prefix='/auth')
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
-        print(request.form)
         userName = request.form.get('name')
-        print(userName)
         userContact = request.form.get('phonenumber')
         userEmail = request.form.get('email')
         userPassword = request.form.get('password')
@@ -43,7 +41,6 @@ def register():
                 error = f"User {userEmail} is already registered."
             else:
                 return redirect(url_for("auth.login"))
-        print(error)
         flash(error)
 
     return render_template('register.html')

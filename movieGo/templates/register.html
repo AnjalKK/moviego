@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/287753113d.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="/static/register.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
     <title>MovieGo|Register</title>
 </head>
 <body>
@@ -15,7 +15,6 @@
             <div class="row h-100 w-100">
                 <div class="col-md-6 side-image">
                 </div>
-<<<<<<< Updated upstream
                 <form action="" method="POST">
                     <div class="col-md-6 right">
                         <div class="input-box">
@@ -50,36 +49,6 @@
                             <div class="signin">
                                 <span>Already have an account?<a href="#">Login here</a></span>
                             </div>
-=======
-                <div class="col-md-6 right">
-                    <div class="input-box">
-                        <header>Create account</header>
-                        <div class="input-field">
-                            <input type="text" class="input" id="name" required autocomplete="off">
-                            <label for="name">Name</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="text" class="input" id="phonenumber" required autocomplete="off">
-                            <label for="phonenumber">Phone No</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="email" class="input" id="email" required autocomplete="off">
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="password" class="input" id="password" required>
-                            <label for="password">Password</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="password" class="input" id="repassword" required>
-                            <label for="repassword">Retype Password</label>
-                        </div>
-                        <div class="input-field">
-                            <input type="submit" class="submit" id="submit" value="Sign-up">
-                        </div>
-                        <div class="signin">
-                            <span>Already have an account?<a href="./login.html">Login here</a></span>
->>>>>>> Stashed changes
                         </div>
                     </div>
                 </form>
