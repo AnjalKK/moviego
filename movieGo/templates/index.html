@@ -40,58 +40,18 @@
                         </div>
                     </nav>
                 </div>
-                <div class="row border-bottom" style="height: 55%; color: #fbf5f3;">
+                <div class="row border-bottom" style="height: 60%; color: #fbf5f3; background-color: black;">
                     <div class="container-fluid custom-container">
                         <div class="row scrolling-row d-flex flex-row flex-nowrap overflow-auto mx-5">
-                            <div class="card border-0 pt-2" style="width: 18rem; background-color: #fbf5f3">
-                                  <img src="https://dbdzm869oupei.cloudfront.net/img/posters/preview/91008.png" class="card-img-top" alt="..." style="object-fit: cover;">
-                                  <div class="card-body">
-                                    <p class="card-text">Movie 1</p>
-                                      <a href="{{ url_for('book.movie') }}" class="stretched-link"></a>
+                            {% for item in content %}
+                            <div class="card border-0 pt-4" style="width: 18rem; background-color: black;">
+                                  <img src="{{ item.moviePoster }}" class="card-img-top" alt="..." style="object-fit: cover;">
+                                  <div class="card-body" style="color: #fbf5f3;">
+                                    <p class="card-text">{{ item.movieTitle }}</p>
+                                      <a href="{{ url_for('book.movie', movie_id = item.movieId) }}" class="stretched-link"></a>
                                   </div>
                             </div>
-                            <div class="card border-0 pt-2" style="width: 18rem; background-color: #fbf5f3">
-                                  <img src="https://dbdzm869oupei.cloudfront.net/img/posters/preview/91008.png" class="card-img-top" alt="..." style="object-fit: cover;">
-                                  <div class="card-body">
-                                    <p class="card-text">Movie 1</p>
-                                      <a href="{{ url_for('book.movie') }}" class="stretched-link"></a>
-                                  </div>
-                            </div>
-                            <div class="card border-0 pt-2" style="width: 18rem; background-color: #fbf5f3">
-                                  <img src="https://dbdzm869oupei.cloudfront.net/img/posters/preview/91008.png" class="card-img-top" alt="..." style="object-fit: cover;">
-                                  <div class="card-body">
-                                    <p class="card-text">Movie 1</p>
-                                      <a href="{{ url_for('book.movie') }}" class="stretched-link"></a>
-                                  </div>
-                            </div>
-                            <div class="card border-0 pt-2" style="width: 18rem; background-color: #fbf5f3">
-                                  <img src="https://dbdzm869oupei.cloudfront.net/img/posters/preview/91008.png" class="card-img-top" alt="..." style="object-fit: cover;">
-                                  <div class="card-body">
-                                    <p class="card-text">Movie 1</p>
-                                      <a href="{{ url_for('book.movie') }}" class="stretched-link"></a>
-                                  </div>
-                            </div>
-                            <div class="card border-0 pt-2" style="width: 18rem; background-color: #fbf5f3">
-                                  <img src="https://dbdzm869oupei.cloudfront.net/img/posters/preview/91008.png" class="card-img-top" alt="..." style="object-fit: cover;">
-                                  <div class="card-body">
-                                    <p class="card-text">Movie 1</p>
-                                      <a href="{{ url_for('book.movie') }}" class="stretched-link"></a>
-                                  </div>
-                            </div>
-                            <div class="card border-0 pt-2" style="width: 18rem; background-color: #fbf5f3">
-                                  <img src="https://dbdzm869oupei.cloudfront.net/img/posters/preview/91008.png" class="card-img-top" alt="..." style="object-fit: cover;">
-                                  <div class="card-body">
-                                    <p class="card-text">Movie 1</p>
-                                      <a href="{{ url_for('book.movie') }}" class="stretched-link"></a>
-                                  </div>
-                            </div>
-                            <div class="card border-0 pt-2" style="width: 18rem; background-color: #fbf5f3">
-                                  <img src="https://dbdzm869oupei.cloudfront.net/img/posters/preview/91008.png" class="card-img-top" alt="..." style="object-fit: cover;">
-                                  <div class="card-body">
-                                    <p class="card-text">Movie 1</p>
-                                      <a href="{{ url_for('book.movie') }}" class="stretched-link"></a>
-                                  </div>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

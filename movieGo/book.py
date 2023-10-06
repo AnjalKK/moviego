@@ -5,22 +5,33 @@ from flask import (
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 
-
 bp = Blueprint('book', __name__, url_prefix='/book')
 
 
-@bp.route('/movie', methods=('GET','POST'))
-def movie():
+@bp.route('/movieList', methods=('GET', 'POST'))
+def movielist():
     if request.method == 'GET':
         db = get_db()
         error = None
-        cursor = db.cursor()
-        cursor.execute('SELECT * FROM movie WHERE movieId = 1')
-        movieSelected = cursor.fetchone()
+        cursor = db.cursor(dictionary=True)
+        cursor.execute('SELECT * FROM movie')
+        movieSelected = cursor.fetchall()
+        db.close()
+        return render_template('index.html', content=movieSelected)
 
+
+@bp.route('/movie/<int:movie_id>', methods=('GET', 'POST'))
+def movie(movie_id):
+    if request.method == 'GET':
+        db = get_db()
+        error = None
+        cursor = db.cursor(dictionary=True)
+        cursor.execute(f"SELECT * FROM movie where movieId = {movie_id}")
+        movieSelected = cursor.fetchone()
+        db.close()
         return render_template('movie.html', content=movieSelected)
 
-@bp.route('/slot',)
+
+@bp.route('/slot', )
 def slot():
     return render_template('booking.html')
-

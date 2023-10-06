@@ -13,9 +13,9 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
-    @app.route('/')
-    def index():
-        return render_template('index.html')
+    # @app.route('/')
+    # def index():
+    #     return render_template('index.html')
 
     @app.route('/hello')
     def hello():
