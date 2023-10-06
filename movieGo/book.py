@@ -33,5 +33,6 @@ def movie(movie_id):
 
 
 @bp.route('/slot', )
+@login_required
 def slot():
     return render_template('booking.html')

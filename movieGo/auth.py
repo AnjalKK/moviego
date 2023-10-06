@@ -44,3 +44,32 @@ def register():
         flash(error)
 
     return render_template('register.html')
+
+
+@bp.route('/login', methods=('GET', 'POST'))
+def login():
+    print(request.method)
+    if request.method == 'POST':
+        username = request.form.get('email')
+        password = request.form.get('password')
+        print(username)
+        db = get_db()
+        print(db)
+        error = None
+        cursor = db.cursor()
+        cursor.execute(f"SELECT * FROM user WHERE userEmail = '{username}'")
+        userSelected = cursor.fetchone()
+        print(userSelected)
+        if userSelected is None:
+            error = 'Incorrect username.'
+        elif not check_password_hash(userSelected[4], password):
+            error = 'Incorrect password.'
+
+        if error is None:
+            session.clear()
+            session['user_id'] = userSelected[0]
+            return redirect(url_for('book.slot'))
+        print(error)
+        flash(error)
+
+    return render_template('login.html')
