@@ -1,6 +1,9 @@
 import mysql.connector
+import functools
+import jwt
+from datetime import timedelta, datetime
 from flask import (
-    Blueprint, flash, redirect, render_template, request, session, url_for
+    Blueprint, flash, g, redirect, render_template, request, session, url_for
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 from movieGo.db import get_db
@@ -63,7 +66,6 @@ def login():
         cursor = db.cursor()
         cursor.execute(f"SELECT * FROM user WHERE userEmail = '{username}'")
         userSelected = cursor.fetchone()
-        print(userSelected)
         if userSelected is None:
             error = 'Incorrect username.'
         elif not check_password_hash(userSelected[4], password):
@@ -71,9 +73,19 @@ def login():
 
         if error is None:
             session.clear()
+            session.permanent = True
             session['user_id'] = userSelected[0]
-            return redirect(url_for('book.movielist'))
-        print(error)
-        flash(error)
+            session['last_active_time'] = datetime.now()
 
+            return redirect(url_for('book.movielist'))
+        else:
+            errorMessage = error
+            return render_template('login.html', data=errorMessage)
     return render_template('login.html')
+
+
+
+@bp.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('auth.login'))

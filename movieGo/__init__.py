@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 
 from flask import Flask, render_template
 
@@ -12,6 +13,7 @@ def create_app(test_config=None):
         app.config.from_pyfile('config.py', silent=True)
     else:
         app.config.from_mapping(test_config)
+    app.permanent_session_lifetime = timedelta(minutes=5)
 
     @app.route('/')
     def index():

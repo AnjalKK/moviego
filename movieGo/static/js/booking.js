@@ -26,18 +26,6 @@ tickets.forEach((ticket) => {
 document.addEventListener("DOMContentLoaded", function(){
     const dateCardsContainer = document.querySelector(".date-cards");
 
-    const today = new Date();
-    const numberOfDaysToShow = 7;
-
-    function formatDate(date) {
-        const dayOptions = { weekday: "short" };
-        const monthOptions = { month: "short", day: "numeric" };
-        const dayOfWeek = date.toLocaleDateString(undefined, dayOptions);
-        const monthAndDay = date.toLocaleString(undefined, monthOptions);
-
-        return `${dayOfWeek}\n${monthAndDay}`;
-    }
-
     var selectedDate = null; // Variable to store the selected date
     var selectedTime = null; // Variable to store the selected time
 
@@ -56,18 +44,12 @@ document.addEventListener("DOMContentLoaded", function(){
         dateCard.className = "date-card";
         dateCard.textContent = date['date_time'];
 
-        if (i === 0) {
-            dateCard.classList.add("selected");
-            selectedDate = formatDate(date); // Use the same datetime format
-        }
-
         dateCard.onclick = function () {
             if (i === 0) {
                 // If it's the first date card (today), don't update the URL
                 return;
             }
 
-//            selectedDate = formatDate(date); // Use the same datetime format
             updateURL(date['date_time']); // Call the function to update the URL
         };
 
@@ -88,7 +70,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 // Send the selected seat IDs to the server using an HTTP POST request
                 fetch(`/book/movie/${movieId}/show`, {
                     method: "POST",
-                    body: JSON.stringify({ selectedSeats: selectedSeatIds }),
+                    body: JSON.stringify({ selectedSeats: selectedSeatIds, movieShowDate: movieshowdate }),
                     headers: {
                         "Content-Type": "application/json"
                     }

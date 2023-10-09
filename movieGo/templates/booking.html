@@ -7,7 +7,7 @@
     <script src="https://kit.fontawesome.com/287753113d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/booking.css') }}">
     <link rel="stylesheet" href="/static/book_steats.css">
-    <title>Booking|setas</title>
+    <title>Booking|seats</title>
 </head>
 <body>
     <div class="container-fluid overflow-hidden" style="height: 100vh; background-color: #00072D;">
@@ -16,6 +16,7 @@
                 <div class="center">
                     <div class="tickets">
                         <form action="" method="post" id="seatSelectionForm">
+                            <input type="hidden" name="from_get" value="{{ variable }}">
                             <div class="ticketselector">
                                 <div class="seats">
                                     <div class="status">
@@ -49,6 +50,7 @@
         var contentData = {{ content | tojson | safe }};
         var dates = {{ dates | tojson | safe }};
         var movieId = {{ movie_id }};
+        var movieshowdate = {{ variable | tojson | safe }};
     </script>
      <script src="{{ url_for('static', filename='js/booking.js') }}"></script>
 
