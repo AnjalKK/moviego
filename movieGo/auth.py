@@ -1,7 +1,6 @@
-import functools
 import mysql.connector
 from flask import (
-    Blueprint, flash, g, redirect, render_template, request, session, url_for
+    Blueprint, flash, redirect, render_template, request, session, url_for
 )
 from werkzeug.security import check_password_hash, generate_password_hash
 from movieGo.db import get_db
@@ -32,6 +31,13 @@ def register():
         if error is None:
             try:
                 cursor = db.cursor()
+                cursor.execute(f'SELECT userEmail FROM user')
+                existing_users = cursor.fetchall()
+                print(existing_users)
+                for user in existing_users:
+                    if userEmail in user[0]:
+                        data = "User already registered."
+                        return render_template('register.html', data=data)
                 cursor.execute("INSERT INTO user(userName, userContact, userEmail, userPassword) VALUES (%s,%s,%s,%s)",
                                (userName, userContact, userEmail, generate_password_hash(userPassword)))
                 db.commit()
@@ -41,7 +47,7 @@ def register():
                 error = f"User {userEmail} is already registered."
             else:
                 return redirect(url_for("auth.login"))
-        flash(error)
+        print(error)
 
     return render_template('register.html')
 
@@ -52,9 +58,7 @@ def login():
     if request.method == 'POST':
         username = request.form.get('email')
         password = request.form.get('password')
-        print(username)
         db = get_db()
-        print(db)
         error = None
         cursor = db.cursor()
         cursor.execute(f"SELECT * FROM user WHERE userEmail = '{username}'")
@@ -68,7 +72,7 @@ def login():
         if error is None:
             session.clear()
             session['user_id'] = userSelected[0]
-            return redirect(url_for('book.slot'))
+            return redirect(url_for('book.movielist'))
         print(error)
         flash(error)
 

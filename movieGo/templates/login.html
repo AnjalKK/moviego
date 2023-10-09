@@ -13,14 +13,8 @@
         <div class="container overflow-y-auto overflow-x-hidden mt-5" style="background-color: #fbf5f3; border-radius: 25px;">
           <div class="col-12" style="height: 90vh;">
             <div class="row h-100 w-100">
-                <div class="col-md-6 side-image">s
-                    <!--insert logo here-->
-                    <!-- <div class="text">
-                        <p>Join the community book your tickets <i>-MovieGo</i></p>
-                    </div> -->
-                </div>
                 <form action="" method="POST">
-                <div class="col-md-6 right">
+                <div class="col-md-6 " style="margin-left:450px; margin-top: 170px;">
                     <div class="input-box">
                         <header>User Login</header>
 
@@ -37,7 +31,7 @@
                             <input type="submit" class="submit" id="submit" value="Login">
                         </div>
                         <div class="signup">
-                            <span>New user?<a href="./register.html">Register here</a></span>
+                            <span>New user?<a href="{{ url_for('auth.register') }}">Register here</a></span>
                         </div>
                     </div>
                 </div>

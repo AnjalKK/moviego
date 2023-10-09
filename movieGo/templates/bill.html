@@ -1,0 +1,105 @@
+
+<html lang="en">
+<!DOCTYPE html>
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/canvas-toBlob/0.4.1/canvas-toBlob.min.js"></script>
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/287753113d.js" crossorigin="anonymous"></script>
+
+
+    <title>Payment</title>
+    </head>
+    <body>
+    <div class="container-fluid overflow-hidden" style="height: 100vh; background-color: #00072D;">
+        <div class="container overflow-y-auto overflow-x-hidden mt-5" style="background-color: #fbf5f3; border-radius: 25px;">
+            <div class="col-12" style="height: 90vh;">
+                <div class="row px-5 border-bottom" style="height: 10%;">
+                    <nav class="navbar navbar-expand-lg" style="background-color: #fbf5f3; color: black;">
+                        <a class="navbar-brand" href="#">MovieGo</a>
+                    </nav>
+                </div>
+                <div class="row" style="height: 50%; color: #1173f3;">
+                    <div class="container-fluid custom-container">
+                        <div class="row" style="height: 130%; background-color: rgb(0, 0, 0); display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                            <div class="container">
+                            <div class="row">
+                            <div class="col-12 text-center" >
+                            <h2 style="color: white;">Make Payment </h2>
+                            </div>
+                            </div>
+                            <div class="row" style="margin-top: 80px; margin-left: 80px; margin-right: 80px;">
+                            <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="cardNumber" style="color: white;">Card Number</label>
+                            <input type="text" class="form-control" style="margin-top: 20px;" id="cardNumber" placeholder="1234 5678 9012 3456">
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="cardName" style="color: white;">Card Name</label>
+                            <input type="text" class="form-control" style="margin-top: 20px;" id="cardName" placeholder="John Doe">
+                            </div>
+                            </div>
+                            </div>
+                            <div class="row" style="margin-left: 80px; margin-right: 80px; margin-top: 30px;">
+                            <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="expirationDate" style="color: white;">Expiration Date</label>
+                            <input type="text" class="form-control" style="margin-top: 20px;" id="expirationDate" placeholder="MM/YYYY">
+                            </div>
+                            </div>
+                            <div class="col-md-6">
+                            <div class="form-group">
+                            <label for="cvv" style="color: white;">CVV</label>
+                            <input type="text" class="form-control" style="margin-top: 20px;" id="cvv" placeholder="123">
+                            </div>
+                            </div>
+                            </div>
+                            <div class="row justify-content-end">
+                            <div class="col-md-6">
+                            <div class="payment-icons">
+
+                            </div>
+                            </div>
+                            </div>
+                            <div class="row" style="margin-top: 80px; ">
+                            <div class="col-md-12 text-center">
+                            <a  href="{{ url_for('book.confirmation') }}"><button type="submit" class="btn btn-primary">Submit Payment</button></a>
+                            </div>
+                            </div>
+                            </div>
+                           </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("downloadButton").addEventListener("click", function() {
+        const elementToDownload = document.querySelector(".col-6");
+
+        html2canvas(elementToDownload, { backgroundColor: null }).then(function(canvas) {
+        canvas.toBlob(function(blob) {
+        const url = URL.createObjectURL(blob);
+
+        // Create a link to download the JPG image
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = "element.jpg";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        }, "image/jpeg");
+        });
+        });
+        </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+</html>
